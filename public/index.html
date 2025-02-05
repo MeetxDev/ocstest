@@ -72,7 +72,7 @@
             const userid = document.getElementById("userid").value;
             const password = document.getElementById("password").value;
 
-            const passwordHash = md5(password);
+            const passwordHash = md5(password); // make sure password going to server is hashed
 
 
             const response = await fetch("/login", {
