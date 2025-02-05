@@ -65,16 +65,20 @@
     		color: #ffff ;
 		}
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/build/md5.min.js"></script>
     <script>
         async function login(event) {
             event.preventDefault();
             const userid = document.getElementById("userid").value;
             const password = document.getElementById("password").value;
 
+            const passwordHash = md5(password);
+
+
             const response = await fetch("/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ userid, password }),
+                body: JSON.stringify({ userid, passwordHash }),
             });
 
             const data = await response.json();
